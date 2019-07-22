@@ -5,6 +5,7 @@ import Nav from './Nav';
 import Footer from './Footer';
 import Homepage from './Homepage';
 import TermsOfService from './TermsOfService';
+import ResultPage from './ResultPage';
 
 export default class App extends React.Component {
   render() {
@@ -18,6 +19,7 @@ export default class App extends React.Component {
               <div className="col-12 col-md-10 col-lg-8 mx-auto">
 
               <Route exact path="/" component={ Homepage } />
+              <Route path="/result" component={ ResultPage } />
               <Route path="/terms-of-service" component={ TermsOfService } />
 
               </div>
