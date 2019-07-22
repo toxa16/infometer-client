@@ -2,6 +2,7 @@ import React from 'react';
 
 import Nav from './Nav';
 import Footer from './Footer';
+import Homepage from './Homepage';
 
 export default class App extends React.Component {
   render() {
@@ -13,17 +14,7 @@ export default class App extends React.Component {
           <div className="row text-center">
             <div className="col-12 col-md-10 col-lg-8 mx-auto">
 
-              <h1 className="font-weight-bold text-info">InfoMeter</h1>
-              <p>Check your info now!</p>
-              <form action="#">
-                <div className="form-group">
-                  <input className="form-control form-control-lg" type="text"
-                      name="q" placeholder="e.g. &quot;Kate loves me&quot;" />
-                </div>
-                <div className="form-group">
-                  <button type="submit" className="btn btn-info btn-lg">Check</button>
-                </div>
-              </form>
+            <Homepage />
 
             </div>
           </div>
