@@ -45,7 +45,7 @@ export default class App extends React.Component {
       <article className="h-100 d-flex flex-column justify-content-between">
         <Nav onBrandClick={ this.handleBrandClick.bind(this) } />
 
-        <main className="container">
+        <main className="container py-3">
           <div className="row text-center">
             <div className="col-12 col-md-10 col-lg-8 mx-auto">
 
