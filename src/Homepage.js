@@ -10,7 +10,7 @@ export default class Homepage extends React.Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    const q = this.state.q;
+    const q = this.state.q.trim();
     q && this.props.onSubmit(q);
   }
     
