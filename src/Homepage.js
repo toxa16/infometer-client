@@ -1,12 +1,17 @@
 import React from 'react';
 
 export default class Homepage extends React.Component {
+  handleSubmit(event) {
+    event.preventDefault();
+    this.props.onSubmit();
+  }
+
   render() {
     return (
       <div>
         <h1 className="font-weight-bold text-info">InfoMeter</h1>
         <p>Check your info now!</p>
-        <form action="#">
+        <form action="/result" method="get" onSubmit={ this.handleSubmit.bind(this) }>
           <div className="form-group">
             <input className="form-control form-control-lg" type="text"
                 name="q" placeholder="e.g. &quot;Kate loves me&quot;" />

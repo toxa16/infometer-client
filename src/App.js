@@ -1,5 +1,4 @@
 import React from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
 
 import Nav from './Nav';
 import Footer from './Footer';
@@ -27,6 +26,18 @@ export default class App extends React.Component {
     });
   }
 
+  handleSubmit() {
+    this.setState({
+      page: 'result-page',
+    });
+  }
+
+  handleBackClick() {
+    this.setState({
+      page: 'homepage',
+    });
+  }
+
   render() {
     return (
       <article className="h-100 d-flex flex-column justify-content-between">
@@ -36,7 +47,10 @@ export default class App extends React.Component {
           <div className="row text-center">
             <div className="col-12 col-md-10 col-lg-8 mx-auto">
 
-            { this.state.page === 'homepage' && <Homepage /> }
+            { this.state.page === 'homepage' && 
+                <Homepage onSubmit={ this.handleSubmit.bind(this) } /> }
+            { this.state.page === 'result-page' &&
+                <ResultPage onBackClick={ this.handleBackClick.bind(this) } /> }
             { this.state.page === 'tos' && <TermsOfService /> }
 
             </div>
