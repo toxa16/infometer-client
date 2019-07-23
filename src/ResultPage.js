@@ -1,6 +1,10 @@
 import React from 'react';
 
 export default class ResultPage extends React.Component {
+  componentDidMount() {
+    console.log(this.props.q);
+  }
+
   handleBackClick(event) {
     event.preventDefault();
     this.props.onBackClick();

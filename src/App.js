@@ -11,6 +11,7 @@ export default class App extends React.Component {
     super();
     this.state = {
       page: 'homepage',
+      q: '',
     };
   }
 
@@ -26,9 +27,10 @@ export default class App extends React.Component {
     });
   }
 
-  handleSubmit() {
+  handleSubmit(q) {
     this.setState({
       page: 'result-page',
+      q,
     });
   }
 
@@ -50,7 +52,7 @@ export default class App extends React.Component {
             { this.state.page === 'homepage' && 
                 <Homepage onSubmit={ this.handleSubmit.bind(this) } /> }
             { this.state.page === 'result-page' &&
-                <ResultPage onBackClick={ this.handleBackClick.bind(this) } /> }
+                <ResultPage q={ this.state.q } onBackClick={ this.handleBackClick.bind(this) } /> }
             { this.state.page === 'tos' && <TermsOfService /> }
 
             </div>
