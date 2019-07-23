@@ -1,13 +1,20 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 
-export default function Nav() {
-  return (
-    <nav className="navbar navbar-light bg-light">
-      <div className="container">
-        <Link className="navbar-brand" to="/">InfoMeter</Link>
-        <a className="text-info" href="#"><i className="fab fa-twitter"></i></a>
-      </div>
-    </nav>
-  );
+export default class Nav extends React.Component {
+  handleBrandClick(event) {
+    event.preventDefault();
+    this.props.onBrandClick();
+  }
+
+  render() {
+    return (
+      <nav className="navbar navbar-light bg-light">
+        <div className="container">
+          <a className="navbar-brand" href="/"
+              onClick={ this.handleBrandClick.bind(this) }>InfoMeter</a>
+          <a className="text-info" href="#"><i className="fab fa-twitter"></i></a>
+        </div>
+      </nav>
+    );
+  }
 }

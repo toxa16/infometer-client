@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 
 import Nav from './Nav';
 import Footer from './Footer';
@@ -8,29 +8,45 @@ import TermsOfService from './TermsOfService';
 import ResultPage from './ResultPage';
 
 export default class App extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      page: 'homepage',
+    };
+  }
+
+  handleBrandClick() {
+    this.setState({
+      page: 'homepage',
+    });
+  }
+
+  handleTosClick() {
+    this.setState({
+      page: 'tos',
+    });
+  }
+
   render() {
     return (
-      <Router>
-        <article className="h-100 d-flex flex-column justify-content-between">
-          <Nav />
+      <article className="h-100 d-flex flex-column justify-content-between">
+        <Nav onBrandClick={ this.handleBrandClick.bind(this) } />
 
-          <main className="container">
-            <div className="row text-center">
-              <div className="col-12 col-md-10 col-lg-8 mx-auto">
+        <main className="container">
+          <div className="row text-center">
+            <div className="col-12 col-md-10 col-lg-8 mx-auto">
 
-              <Route exact path="/" component={ Homepage } />
-              <Route path="/result" component={ ResultPage } />
-              <Route path="/terms-of-service" component={ TermsOfService } />
+            { this.state.page === 'homepage' && <Homepage /> }
+            { this.state.page === 'tos' && <TermsOfService /> }
 
-              </div>
             </div>
-          </main>
+          </div>
+        </main>
 
-          <div className="clearfix"></div>
+        <div className="clearfix"></div>
 
-          <Footer />
-        </article>
-      </Router>
+        <Footer onTosClick={ this.handleTosClick.bind(this) } />
+      </article>
     );
   }
 }
