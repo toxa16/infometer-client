@@ -1,18 +1,38 @@
 import React from 'react';
 
+function delayedLoop(iterations, delay, callback) {
+  if (iterations === 0) {
+    return;
+  } else {
+    setTimeout(() => {
+      callback();
+      delayedLoop(iterations - 1, delay, callback);
+    }, delay);
+  }
+}
+
 export default class ResultPage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      infoPercentage: null,
+      infoPercentage: 0,
     };
   }
 
   componentDidMount() {
     const randomNumber = Math.round(Math.random() * 100);
-    this.setState({
-      infoPercentage: randomNumber,
-    });
+    /*for (let i = 0; i <= randomNumber; i++) {
+      
+    }*/
+    let i = 0;
+    setTimeout(() => {
+      delayedLoop(randomNumber, 50, () => {
+        i++;
+        this.setState({
+          infoPercentage: i,
+        });
+      });
+    }, 800);
   }
 
   handleBackClick(event) {
