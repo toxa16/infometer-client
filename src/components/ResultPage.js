@@ -13,13 +13,13 @@ function randomWithSeed(seedStr) {
   return Math.round(pseudoRand * 100);
 }
 
-function delayedLoop(iterations, delay, callback) {
+function delayedLoop(iterations, delay, callback, i = 0) {
   if (iterations === 0) {
     return;
   } else {
     setTimeout(() => {
-      callback();
-      delayedLoop(iterations - 1, delay, callback);
+      callback(i);
+      delayedLoop(iterations - 1, delay, callback, i + 1);
     }, delay);
   }
 }
@@ -33,12 +33,8 @@ export default function ResultPage(props) {
   const [percentage, setPercentage] = useState(0);
 
   useEffect(() => {
-    let i = 0;
     setTimeout(() => {
-      delayedLoop(maxPercentage, 50, () => {
-        i++;
-        setPercentage(i);
-      });
+      delayedLoop(maxPercentage, 50, i => setPercentage(i + 1));
     }, 800);
   }, []);
 
