@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import qs from 'query-string';
+import './imc.css';
 
 function randomWithSeed(seedStr) {
   const str = seedStr.toLowerCase();
@@ -43,9 +44,9 @@ export default function ResultPage(props) {
   return (
     <div>
       <p className="h3">Your info is</p>
-      <p className="font-weight-bold text-info display-1">
+      <p className={ "font-weight-bold display-1 imc-" + percentage }>
         <noscript>{ maxPercentage }%</noscript>
-        { visible && percentage }
+        { visible && percentage }%
       </p>
       <p className="text-muted pb-5">"{ q }"</p>
       <div>
