@@ -31,8 +31,10 @@ export default function ResultPage(props) {
 
   const maxPercentage = randomWithSeed(q);
   const [percentage, setPercentage] = useState(0);
+  const [visible, setVisible] = useState(false);
 
   useEffect(() => {
+    setVisible(true);
     setTimeout(() => {
       delayedLoop(maxPercentage, 50, i => setPercentage(i + 1));
     }, 800);
@@ -42,7 +44,8 @@ export default function ResultPage(props) {
     <div>
       <p className="h3">Your info is</p>
       <p className="font-weight-bold text-info display-1">
-        { percentage }%
+        <noscript>{ maxPercentage }%</noscript>
+        { visible && percentage }
       </p>
       <p className="text-muted pb-5">"{ q }"</p>
       <div>
